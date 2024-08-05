@@ -10,15 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/layout": "^2.3.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^5.16.6",
+    "@mui/x-data-grid": "^7.12.0",
     "@nextui-org/react": "^2.4.6",
-    "framer-motion": "^11.3.19",
+    "@react-stately/data": "^3.11.6",
+    "axios": "^1.7.2",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.3.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.25.1"
+    "react-router-dom": "^6.25.1",
+    "react-table": "^7.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-table": "^7.7.20",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "@vitejs/plugin-react": "^4.3.1",

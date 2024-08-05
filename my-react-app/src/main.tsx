@@ -2,14 +2,23 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { NextUIProvider } from '@nextui-org/react';
-import './index.css'; // Asegúrate de que la ruta del archivo sea correcta
+import './index.css'; 
+import React from 'react';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Failed to find the root element');
+}
+
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
-  <NextUIProvider>
-    <Router>
-      <App />
-    </Router>
-  </NextUIProvider>
+  <React.StrictMode> {/* Add StrictMode for development checks */}
+    <NextUIProvider>
+      <Router>
+        <App />
+      </Router>
+    </NextUIProvider>
+  </React.StrictMode>
 );
