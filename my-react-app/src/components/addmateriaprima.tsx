@@ -115,7 +115,12 @@ const RawMaterialTable: React.FC = () => {
     };
 
     return (
-        <Container>
+        <Container style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            backgroundColor:'white'
+        }}>
             <Typography variant="h4" gutterBottom>Raw Material Management</Typography>
             <TextField
                 label="Nombre"

@@ -134,8 +134,8 @@ const UserDataTable: React.FC = () => {
                     </Grid>
                 ))}
                 <Grid item xs={12}>
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>
-                        Add Row
+                    <Button variant="contained" color="success" onClick={handleSubmit}>
+                        Agregar
                     </Button>
                 </Grid>
                 {formError && <Typography color="error">{formError}</Typography>}

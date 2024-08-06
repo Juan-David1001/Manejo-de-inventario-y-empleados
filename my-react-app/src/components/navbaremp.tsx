@@ -62,6 +62,15 @@ function AppNavbaremp() {
           <Link color="foreground" href="MisDatosmp">
             Mis Datos
           </Link>
+          
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="materia-prima">
+            Materia Prima
+          </Link>
+          
         </NavbarItem>
       </NavbarContent>
       
@@ -88,10 +97,13 @@ function AppNavbaremp() {
           </Link>
           
         </NavbarMenuItem>
-        <NavbarMenuItem>
+        <NavbarMenuItem >
           <Link color="foreground" className="w-full" href="MisDatosmp" size="lg">
             Mis Datos
           </Link>
+          <Link color="foreground" href="materia-prima">
+            Materia Prima
+          </Link> <br />
           <Cerrar />
 
         </NavbarMenuItem>

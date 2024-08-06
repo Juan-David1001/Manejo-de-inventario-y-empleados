@@ -27,7 +27,11 @@ export default function AppNavbar() {
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' }}>
       <NavbarContent>
-        <NavbarMenuToggle
+        <NavbarMenuToggle style={{
+          backgroundColor: 'white', 
+          color: 'black',
+          border:'none',
+        }}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />

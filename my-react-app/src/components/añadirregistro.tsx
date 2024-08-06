@@ -82,8 +82,8 @@ const AddUserDataForm: React.FC<{ onClose: () => void; onSuccess: () => void }> 
                 ))}
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} color="primary">Cancel</Button>
-                <Button onClick={handleSubmit} color="primary">Add</Button>
+                <Button onClick={onClose} color="primary">Cancelar</Button>
+                <Button onClick={handleSubmit} color="primary">Añadir</Button>
             </DialogActions>
         </Dialog>
     );
