@@ -48,10 +48,21 @@ const DeleteColumnFormm: React.FC = () => {
     };
 
     return (
-        <div style={{ padding: 20 }}>
-            <Typography variant="h6">Delete Column</Typography>
+        <div style={{   
+            margin:  '40px', borderRadius: '50px',
+            background: '#e0e0e0',
+            boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+                height: '50vh',
+                width: '50vw',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '20px',
+                color: '#333',}}>
+            <Typography variant="h3">Borrar trabajo</Typography>
             <FormControl fullWidth margin="normal">
-                <InputLabel>Column Name</InputLabel>
+                <InputLabel>Elige el valor a eliminar</InputLabel>
                 <Select
                     value={selectedColumn}
                     onChange={(e) => setSelectedColumn(e.target.value as string)}
@@ -67,7 +78,7 @@ const DeleteColumnFormm: React.FC = () => {
             {error && <Typography color="error">{error}</Typography>}
             {successMessage && <Typography color="success">{successMessage}</Typography>}
             <Button variant="contained" color="primary" onClick={handleDelete}>
-                Delete Column
+                Borrar
             </Button>
         </div>
     );

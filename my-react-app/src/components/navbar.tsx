@@ -36,6 +36,11 @@ export default function AppNavbar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarItem>
+          <Link color="foreground" href="/admin">
+            Inventario
+          </Link>
+        </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="/empleados">
             Empleados
@@ -47,13 +52,13 @@ export default function AppNavbar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/gastos">
-            Gastos
+          <Link color="foreground" href="/editjobs">
+            editar trabajos
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/facturacion">
-            Facturación
+          <Link color="foreground" href="/editproducts">
+            Gestionar productos
           </Link>
         </NavbarItem>
       </NavbarContent>

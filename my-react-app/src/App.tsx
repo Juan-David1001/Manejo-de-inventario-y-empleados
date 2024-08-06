@@ -4,7 +4,12 @@ import axios from "axios";
 import Login from "./components/Login";
 import HomeEmpleado from "./page/homeempleado";
 import Admin from "./page/Admin";
-import Empleados from "./page/empleados"; // Asegúrate de que la ruta sea correcta
+import Empleados from "./page/empleados"; 
+import MisDatosemp from "./page/MisDatosmp";
+import MateriaPrimaPage from "./page/MateriaPrimaPage"; 
+import AñadirJob from "./page/añadirjob";
+import AdminProducts from "./page/adminproducts";
+
 
 const App: React.FC = () => {
   const [role, setRole] = useState<string | null>(null);
@@ -69,11 +74,29 @@ const App: React.FC = () => {
         path="/empleados"
         element={role === "admin" ? <Empleados /> : <Navigate to="/login" />}
       />
+      
       <Route
         path="/employee"
         element={role === "employee" ? <HomeEmpleado /> : <Navigate to="/login" />}
       />
+      <Route
+        path="/materia-prima"
+        element={role === "employee" || role ==="admin" ? <MateriaPrimaPage /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="MisDatosmp"
+        element={role === "employee" ? <MisDatosemp /> : <Navigate to="/login" />}
+      />
+       <Route
+        path="/editjobs"
+        element={role ==="admin" ? <AñadirJob /> : <Navigate to="/login" />}
+      />
+       <Route
+        path="/editproducts"
+        element={role ==="admin" ? <AdminProducts /> : <Navigate to="/login" />}
+      />
       <Route path="/" element={<Navigate to="/login" />} />
+      
     </Routes>
   );
 };

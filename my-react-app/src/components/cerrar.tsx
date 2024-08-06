@@ -14,7 +14,7 @@ const Cerrar: React.FC = () => {
   };
 
   return (
-    <Button onClick={handleLogout} color="danger" variant="flat" className='text-white'>
+    <Button onClick={handleLogout} color="danger"  className='text-white'>
       Cerrar session 
     </Button>
   );

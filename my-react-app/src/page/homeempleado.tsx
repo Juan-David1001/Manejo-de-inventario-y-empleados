@@ -1,16 +1,24 @@
 
+
+import InventarioList from '../components/InventarioList';
+import AppNavbaremp from '../components/navbaremp';
 import UserDataTable from '../components/UserDataTable';
-
-// Ajusta la ruta si es necesario
-// Importa ProductForm solo si lo necesitas aquí
-
 
 
 const HomeEmpleado: React.FC = () => {
 
   return (
-  <div>
-    <UserDataTable />
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    width: '100vw',
+  }}>
+    
+    <AppNavbaremp />
+    <InventarioList  />
   </div>
   );
 };

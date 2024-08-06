@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Product, InventoryItem } from '../types/types';
 import InventoryForm from './invetarioForm';
-import { Button, Card, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from '@nextui-org/react';
+import { Button, Card, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
 
 const API_URL_PRODUCTS = 'http://192.168.0.16:5000/api/products';
 const API_URL_INVENTORY = 'http://192.168.0.16:5000/api/inventory';
@@ -60,31 +60,30 @@ const InventarioList: React.FC = () => {
     };
 
     return (
-        <Card style={{ padding: '20px', width: '100%' }}>
+        <Card style={{ padding: '20px', width: '100%',marginTop:'10%' }}>   
             <h1>Inventario</h1>
             <Button style={{ margin: '20px 0' }} onClick={handleAddProductClick}>Añadir</Button>
-            <Table aria-label="Inventory Table" style={{ height: "auto", minWidth: "100%" }}>
-                <TableHeader>
-                    <TableColumn>Producto</TableColumn>
-                    <TableColumn>Cantidad</TableColumn>
-                    <TableColumn>Acciones</TableColumn>
-                </TableHeader>
-                <TableBody>
-                    {inventory.map((item) => {
-                        const product = products.find(p => p.id === item.product_id);
-                        return (
-                            <TableRow key={item.id}>
-                                <TableCell>{product ? product.name : 'Unknown Product'}</TableCell>
-                                <TableCell>{item.quantity}</TableCell>
-                                <TableCell>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                {inventory.map((item) => {
+                    const product = products.find(p => p.id === item.product_id);
+                    return (
+                        <div key={item.id} style={{ flex: '1 1 calc(33.333% - 20px)', boxSizing: 'border-box' }}>
+                            <Card>
+                                <CardHeader>
+                                    <p >{product ? product.name : 'Unknown Product'}</p>
+                                </CardHeader>
+                                <CardBody>
+                                    <p>Cantidad: {item.quantity}</p>
+                                </CardBody>
+                                <CardFooter>
                                     <Button color="warning" onClick={() => handleEditClick(item)}>Edit</Button>
                                     <Button color="danger" onClick={() => handleDelete(item.id)} style={{ marginLeft: '10px' }}>Delete</Button>
-                                </TableCell>
-                            </TableRow>
-                        );
-                    })}
-                </TableBody>
-            </Table>
+                                </CardFooter>
+                            </Card>
+                        </div>
+                    );
+                })}
+            </div>
             {showForm && (
                 <InventoryForm
                     product={editingProduct}

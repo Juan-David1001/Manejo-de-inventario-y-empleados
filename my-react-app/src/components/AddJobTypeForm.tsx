@@ -31,13 +31,26 @@ const AddJobTypeForm: React.FC = () => {
     };
 
     return (
-        <Container>
-            <Typography variant="h5" gutterBottom>
-                Add New Job Type
+        <Container 
+        style={{
+            borderRadius: '50px',
+        background: '#e0e0e0',
+        boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+            height: '50vh',
+            width: '50vw',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '20px',
+            color: '#333',
+        }}>
+            <Typography variant="h3" gutterBottom>
+                Añadir un tipo de trabajo
             </Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    label="Job Type"
+                    label="Tipo de trabajo"
                     variant="outlined"
                     fullWidth
                     value={jobType}
@@ -51,7 +64,7 @@ const AddJobTypeForm: React.FC = () => {
                     variant="contained"
                     color="primary"
                 >
-                    Add Job Type
+                    Añadir
                 </Button>
             </form>
         </Container>

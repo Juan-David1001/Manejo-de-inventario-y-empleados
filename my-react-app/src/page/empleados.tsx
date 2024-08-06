@@ -22,12 +22,14 @@ function Admin() {
       flexDirection: 'column' 
     }}>
       <AppNavbar />
+      
       <div style={{ 
         flex: 1, 
         overflowY: 'auto', // Agrega la barra de desplazamiento vertical cuando sea necesario
         padding: '16px',  // Espacio alrededor del contenido
         boxSizing: 'border-box' // Asegura que el padding no afecte el ancho total
       }}>
+        
         <UserDataTable />  
         <UsersTable />
         {isAddUserVisible && <AddUser />} {/* Condicionalmente renderiza AddUser */}

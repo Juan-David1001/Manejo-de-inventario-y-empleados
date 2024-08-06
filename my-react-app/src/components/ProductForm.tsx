@@ -66,7 +66,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                 <Grid container spacing={2} direction="column">
                     <Grid item>
                         <TextField
-                            label="Name"
+                            label="Nombre"
                             variant="outlined"
                             fullWidth
                             value={name}
@@ -77,7 +77,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                     </Grid>
                     <Grid item>
                         <TextField
-                            label="Price"
+                            label="Precio"
                             variant="outlined"
                             type="number"
                             fullWidth
@@ -94,10 +94,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                     )}
                     <Grid item>
                         <Button type="submit" variant="contained" color="primary">
-                            {product ? 'Update Product' : 'Add Product'}
+                            {product ? 'Actualizar producto' : 'Añadir producto'}
                         </Button>
                         <Button type="button" variant="outlined" color="secondary" onClick={onClose} style={{ marginLeft: '10px' }}>
-                            Cancel
+                            Cancelar
                         </Button>
                     </Grid>
                 </Grid>

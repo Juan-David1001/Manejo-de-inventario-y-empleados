@@ -118,7 +118,7 @@ const RawMaterialTable: React.FC = () => {
         <Container>
             <Typography variant="h4" gutterBottom>Raw Material Management</Typography>
             <TextField
-                label="Name"
+                label="Nombre"
                 variant="outlined"
                 fullWidth
                 margin="normal"
@@ -126,7 +126,7 @@ const RawMaterialTable: React.FC = () => {
                 onChange={(e) => setName(e.target.value)}
             />
             <TextField
-                label="Quantity"
+                label="Cantidad"
                 type="number"
                 variant="outlined"
                 fullWidth
@@ -135,7 +135,7 @@ const RawMaterialTable: React.FC = () => {
                 onChange={(e) => setQuantity(e.target.value === '' ? '' : Number(e.target.value))}
             />
             <TextField
-                label="Price"
+                label="Precio"
                 type="number"
                 variant="outlined"
                 fullWidth

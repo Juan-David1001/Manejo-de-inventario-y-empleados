@@ -44,7 +44,12 @@ const ProductList: React.FC = () => {
     };
 
     return (
-        <Container >
+        <Container style={{
+            width: '90vw',
+            height: '90vh',
+
+
+        }} >
             <Typography variant="h4" gutterBottom>
                 Product List
             </Typography>
@@ -54,15 +59,15 @@ const ProductList: React.FC = () => {
                 onClick={handleAddProductClick}
                 style={{ marginBottom: '20px' }}
             >
-                Add New Product
+                Añadir nuevo producto
             </Button>
             <TableContainer component={Paper} >
                 <Table >
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Price</TableCell>
-                            <TableCell>Actions</TableCell>
+                            <TableCell>Nombre</TableCell>
+                            <TableCell>Precio</TableCell>
+                            <TableCell>Acciones</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
