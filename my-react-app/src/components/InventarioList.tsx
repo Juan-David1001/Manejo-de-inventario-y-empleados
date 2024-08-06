@@ -62,7 +62,7 @@ const InventarioList: React.FC = () => {
     return (
         <Card style={{ padding: '20px', width: '100%',marginTop:'10%' }}>   
             <h1>Inventario</h1>
-            <Button style={{ margin: '20px 0' }} onClick={handleAddProductClick}>Añadir</Button>
+            <Button color='success' style={{ margin: '20px 0' }} onClick={handleAddProductClick}>Añadir</Button>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 {inventory.map((item) => {
                     const product = products.find(p => p.id === item.product_id);
@@ -76,8 +76,8 @@ const InventarioList: React.FC = () => {
                                     <p>Cantidad: {item.quantity}</p>
                                 </CardBody>
                                 <CardFooter>
-                                    <Button color="warning" onClick={() => handleEditClick(item)}>Edit</Button>
-                                    <Button color="danger" onClick={() => handleDelete(item.id)} style={{ marginLeft: '10px' }}>Delete</Button>
+                                    <Button color="warning" onClick={() => handleEditClick(item)}>Editar</Button>
+                                    <Button color="danger" onClick={() => handleDelete(item.id)} style={{ marginLeft: '10px' }}>Borrar</Button>
                                 </CardFooter>
                             </Card>
                         </div>

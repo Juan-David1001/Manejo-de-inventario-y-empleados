@@ -8,19 +8,20 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
- 
 } from '@nextui-org/react';
 import Cerrar from './cerrar'; 
+import llogo from '../assets/llogo.png';
 
 export default function AppNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Empleados",
-    "Materia Prima",
-    "Gastos",
-    "Facturación",
-    "Cerrar Sesión"
+    { label: "Inventario", path: "/admin" },
+    { label: "Empleados", path: "/empleados" },
+    { label: "Materia Prima", path: "/materia-prima" },
+    { label: "Editar Trabajos", path: "/editjobs" },
+    { label: "Editar Productos", path: "/editproducts" },
+   
   ];
 
   return (
@@ -34,33 +35,23 @@ export default function AppNavbar() {
           <p className="font-bold text-inherit">Velas</p>
         </NavbarBrand>
       </NavbarContent>
-
+      <NavbarContent justify='center'>
+        <NavbarItem>
+          <img 
+            src={llogo} 
+            style={{ width: '50px', height: '50px', objectFit: 'cover' }} 
+            alt="Logo" 
+          />
+        </NavbarItem>
+      </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-      <NavbarItem>
-          <Link color="foreground" href="/admin">
-            Inventario
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/empleados">
-            Empleados
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/materia-prima">
-            Materia Prima
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/editjobs">
-            editar trabajos
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/editproducts">
-            Gestionar productos
-          </Link>
-        </NavbarItem>
+        {menuItems.map((item) => (
+          <NavbarItem key={item.path}>
+            <Link color="foreground" href={item.path}>
+              {item.label}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
 
       <NavbarContent justify="end">
@@ -71,16 +62,14 @@ export default function AppNavbar() {
 
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item.label}-${index}`}>
             <Link
-              color={
-                item === "Cerrar Sesión" ? "danger" : "foreground"
-              }
+              color={item.label === "Cerrar Sesión" ? "danger" : "foreground"}
               className="w-full"
-              href={item === "Cerrar Sesión" ? "#" : `/${item.toLowerCase().replace(" ", "-")}`}
+              href={item.path}
               size="lg"
             >
-              {item}
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}

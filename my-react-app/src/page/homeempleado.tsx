@@ -2,7 +2,7 @@
 
 import InventarioList from '../components/InventarioList';
 import AppNavbaremp from '../components/navbaremp';
-import UserDataTable from '../components/UserDataTable';
+
 
 
 const HomeEmpleado: React.FC = () => {

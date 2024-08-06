@@ -22,9 +22,46 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// Conectar a la base de datos
+
 const dbPath = path.join(__dirname, "database", "database.db");
 const db = new Database(dbPath, { verbose: console.log });
+
+
+app.get('/api/has-marked-today/:username', (req, res) => {
+  const { username } = req.params;
+  const today = new Date().toISOString().split('T')[0]; // Obtener la fecha en formato YYYY-MM-DD
+
+  try {
+    const rows = db.prepare('SELECT COUNT(*) AS count FROM llegada WHERE nombre = ? AND DATE(fecha) = ?').all(username, today);
+
+    if (rows.length > 0) {
+      res.json({ hasMarked: rows[0].count > 0 });
+    } else {
+      res.json({ hasMarked: false });
+    }
+  } catch (error) {
+    console.error('Error al consultar la llegada:', error);
+    res.status(500).json({ error: 'Error al consultar la llegada' });
+  }
+});
+
+
+
+
+
+
+
+app.post('/api/llegada', (req, res) => {
+  const { username, hora_entrada } = req.body;
+  try {
+    db.prepare('INSERT INTO llegada (nombre, hora_entrada) VALUES (?, ?)')
+      .run(username, hora_entrada); // `hora_entrada` debe estar en formato 'HH:MM:SS'
+    res.status(201).json({ message: 'Llegada registrada exitosamente' });
+  } catch (error) {
+    console.error('Error al registrar la llegada:', error);
+    res.status(500).json({ error: 'No se pudo registrar la llegada' });
+  }
+});
 
 
 

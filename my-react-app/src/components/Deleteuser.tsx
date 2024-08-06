@@ -45,7 +45,7 @@ const DeleteUser: React.FC = () => {
         Delete User
       </Typography>
       <FormControl fullWidth margin="normal">
-        <InputLabel id="user-select-label">Select User to Delete</InputLabel>
+        <InputLabel id="user-select-label">Seleccionar usuario a borrar</InputLabel>
         <Select
           labelId="user-select-label"
           value={selectedUser || ''}
@@ -62,12 +62,12 @@ const DeleteUser: React.FC = () => {
       </FormControl>
       <Button
         variant="contained"
-        color="primary"
+        color="error"
         onClick={handleDeleteUser}
         fullWidth
         sx={{ mt: 2 }}
       >
-        Delete User
+        Borrar usuario
       </Button>
       {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
     </Container>

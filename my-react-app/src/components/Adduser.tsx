@@ -1,7 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import axios from 'axios';
-import { Button, Input, Card, Image } from '@nextui-org/react';
-import llogo from '../assets/llogo.png';
+import { Button, Input, Card} from '@nextui-org/react';
 import { Select, SelectItem } from '@nextui-org/react';
 
 
@@ -48,11 +47,7 @@ const AddUser: React.FC = () => {
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
       }}
     >
-      <Image
-        width={300}
-        alt="Logo"
-        src={llogo}
-      />
+     
       <p style={{ fontSize: '24px', fontWeight: 'bold' }}>Añadir Usuario</p>
       <Card
         style={{

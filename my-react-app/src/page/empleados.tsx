@@ -19,7 +19,9 @@ function Admin() {
       width: '100vw',  // Ancho total del viewport
       overflow: 'hidden', // Oculta el desbordamiento fuera del contenedor principal
       display: 'flex', 
-      flexDirection: 'column' 
+      flexDirection: 'column' ,
+      justifyContent:'center',
+      alignItems:'center',
     }}>
       <AppNavbar />
       
@@ -37,15 +39,17 @@ function Admin() {
       <Button  
         onClick={toggleAddUserVisibility} 
         style={{
-          position: 'fixed',
+         
           bottom: '16px',
           right: '16px',
           padding: '8px 16px',
-          backgroundColor: '#007bff',
+          backgroundColor: 'ButtonShadow',
           color: '#fff',
           border: 'none',
           borderRadius: '4px',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          width: 'fit-content',
+
         }}
       >
         {isAddUserVisible ? 'Cerrar' : 'Agregar Usuario'}

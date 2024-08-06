@@ -10,20 +10,52 @@ import {
   Link,
 } from '@nextui-org/react';
 import Cerrar from './cerrar';
+import llogo from '../assets/llogo.png';
+import {Marcarllegada} from './Marcarllegada';
 
 function AppNavbaremp() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const nombre = localStorage.getItem('username');
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' }}>
       <NavbarContent>
-        <NavbarMenuToggle
+        <NavbarMenuToggle style={{
+          backgroundColor: 'white', 
+          color: 'black',
+          border:'none',
+        }}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-inherit">Velas</p>
+        <h1 style={{
+            color: 'black',
+            fontWeight: 'bold',
+            fontSize: '24px'
+          }} >Hola {nombre}</h1>
         </NavbarBrand>
+      </NavbarContent>
+      <NavbarContent>
+        <NavbarItem>
+          
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify='center'>
+        <NavbarItem>
+          <img 
+            src={llogo} 
+            style={{ width: '50px', height: '50px', objectFit: 'cover' }} 
+            alt="Logo" 
+          />
+        </NavbarItem>
+      </NavbarContent>
+      
+      <NavbarContent>
+        <NavbarItem>
+        <Marcarllegada />
+
+        </NavbarItem>
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
@@ -32,28 +64,36 @@ function AppNavbaremp() {
           </Link>
         </NavbarItem>
       </NavbarContent>
+      
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="employee">
+          <Link color="foreground" href="employee" style={{
+            marginRight: '10px',
+          }}>
             Principal
           </Link>
+          <Cerrar />
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Cerrar />
+          
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         <NavbarMenuItem>
-          <Link color="foreground" className="w-full" href="MisDatosmp" size="lg">
+         
+          <Link color="foreground" className="w-full" href="employee" size="lg">
             Principal
           </Link>
+          
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <Link color="foreground" className="w-full" href="employee" size="lg">
+          <Link color="foreground" className="w-full" href="MisDatosmp" size="lg">
             Mis Datos
           </Link>
+          <Cerrar />
+
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

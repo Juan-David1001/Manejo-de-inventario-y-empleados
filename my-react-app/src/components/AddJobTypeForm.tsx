@@ -33,17 +33,18 @@ const AddJobTypeForm: React.FC = () => {
     return (
         <Container 
         style={{
-            borderRadius: '50px',
-        background: '#e0e0e0',
-        boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
-            height: '50vh',
-            width: '50vw',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '20px',
-            color: '#333',
+            margin:  '40px', borderRadius: '50px',
+            marginBottom:'none',
+            background: 'white',
+            boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+                height: '50vh',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '20px',
+                color: '#333',
         }}>
             <Typography variant="h3" gutterBottom>
                 Añadir un tipo de trabajo
