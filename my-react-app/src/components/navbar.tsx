@@ -21,11 +21,12 @@ export default function AppNavbar() {
     { label: "Materia Prima", path: "/materia-prima" },
     { label: "Editar Trabajos", path: "/editjobs" },
     { label: "Editar Productos", path: "/editproducts" },
+    { label: "Factura ", path: "/factura" },
    
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' }}>
+    <Navbar id='Navbar' onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' , position:'fixed'} }>
       <NavbarContent>
         <NavbarMenuToggle style={{
           backgroundColor: 'white', 

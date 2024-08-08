@@ -5,6 +5,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import './index.css'; 
 import React from 'react';
 
+
 const rootElement = document.getElementById('root');
 
 if (!rootElement) {

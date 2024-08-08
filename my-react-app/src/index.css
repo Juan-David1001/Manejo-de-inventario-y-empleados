@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cad {
+    @apply bg-white text-black p-3 border-1 border-black;
+  }
+}
+@media print {
+  /* Estilos específicos para impresión */
+  #Navbar {
+    display: none;
+
+  }
+  #cann {
+    border: none;
+  }
+  #Addrow{
+    display: none;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .print-hidden {
+    display: none;
+  }
+}
 body{
   display: flex;
   justify-content: center;

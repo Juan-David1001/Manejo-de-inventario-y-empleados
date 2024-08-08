@@ -46,3 +46,9 @@ export interface UserData {
     papel: number;
     fecha: string;
   }
+  export interface Product {
+    id: number;
+    name: string;
+    price: number;
+  }
+  

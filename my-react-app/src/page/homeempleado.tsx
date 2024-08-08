@@ -6,6 +6,7 @@ import AppNavbaremp from '../components/navbaremp';
 
 
 const HomeEmpleado: React.FC = () => {
+ 
 
   return (
   <div style={{

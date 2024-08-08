@@ -18,7 +18,7 @@ function AppNavbaremp() {
   const nombre = localStorage.getItem('username');
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' }}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} style={{ width: '100%' , position:'fixed'}}>
       <NavbarContent>
         <NavbarMenuToggle style={{
           backgroundColor: 'white', 
@@ -51,12 +51,7 @@ function AppNavbaremp() {
         </NavbarItem>
       </NavbarContent>
       
-      <NavbarContent>
-        <NavbarItem>
-        <Marcarllegada />
-
-        </NavbarItem>
-      </NavbarContent>
+     
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="MisDatosmp">
@@ -82,6 +77,12 @@ function AppNavbaremp() {
             Principal
           </Link>
           <Cerrar />
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent>
+        <NavbarItem>
+        <Marcarllegada />
+
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">

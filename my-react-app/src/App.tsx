@@ -9,6 +9,7 @@ import MisDatosemp from "./page/MisDatosmp";
 import MateriaPrimaPage from "./page/MateriaPrimaPage"; 
 import AñadirJob from "./page/añadirjob";
 import AdminProducts from "./page/adminproducts";
+import  Factura  from "./page/factura";
 
 
 const App: React.FC = () => {
@@ -94,6 +95,11 @@ const App: React.FC = () => {
        <Route
         path="/editproducts"
         element={role ==="admin" ? <AdminProducts /> : <Navigate to="/login" />}
+      />
+
+<Route
+        path="/factura"
+        element={role ==="admin" ? <Factura /> : <Navigate to="/login" />}
       />
       <Route path="/" element={<Navigate to="/login" />} />
       

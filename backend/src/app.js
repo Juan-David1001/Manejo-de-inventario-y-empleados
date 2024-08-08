@@ -218,10 +218,14 @@ app.post('/api/inventory', (req, res) => {
 
 
 app.get('/api/products', (req, res) => {
-  const products = db.prepare('SELECT * FROM products').all();
-  res.json(products);
+  try {
+    const products = db.prepare('SELECT id, name, price FROM products').all();
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
-
+  
 // Obtener inventario
 app.get('/api/inventory', (req, res) => {
   const inventory = db.prepare('SELECT * FROM inventario').all();
