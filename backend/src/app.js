@@ -27,6 +27,45 @@ const dbPath = path.join(__dirname, "database", "database.db");
 const db = new Database(dbPath, { verbose: console.log });
 
 
+
+
+// Endpoint para obtener datos de la tabla hora_salida
+app.get('/api/hora_salida', (req, res) => {
+  try {
+    const results = db.prepare('SELECT * FROM hora_salida').all();
+    res.json(results);
+  } catch (error) {
+    console.error('Error al obtener datos de hora_salida:', error);
+    res.status(500).json({ error: 'No se pudo obtener los datos de hora_salida' });
+  }
+});
+
+// Endpoint para obtener datos de la tabla llegada
+app.get('/api/llegada', (req, res) => {
+  try {
+    const results = db.prepare('SELECT * FROM llegada').all();
+    res.json(results);
+  } catch (error) {
+    console.error('Error al obtener datos de llegada:', error);
+    res.status(500).json({ error: 'No se pudo obtener los datos de llegada' });
+  }
+});
+
+
+app.post('/api/hora_salida', (req, res) => {
+  const {username}=req.body;
+  const hora_salida = new Date().toLocaleString("es-CO", { timeZone: "America/Bogota" });
+  try {
+    db.prepare('INSERT INTO hora_salida  (nombre, hora_salida) VALUES (?, ?)').run(username, hora_salida);
+    res.status(201).json({ message: 'Salida registrada exitosamente' });
+  } catch (error) {
+    console.error('Error al registrar la salida:', error);
+    res.status(500).json({ error: 'No se pudo registrar la salida' });
+  }
+
+});
+
+
 app.get('/api/has-marked-today/:username', (req, res) => {
   const { username } = req.params;
   const today = new Date().toISOString().split('T')[0]; // Obtener la fecha en formato YYYY-MM-DD
