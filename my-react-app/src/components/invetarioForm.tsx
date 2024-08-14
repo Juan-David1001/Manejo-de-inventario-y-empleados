@@ -3,13 +3,14 @@ import axios from 'axios';
 import { Product, InventoryItem } from '../types/types';
 import { TextField, Typography, Grid, Snackbar, Alert, Select, MenuItem, InputLabel, FormControl, SelectChangeEvent, useMediaQuery, useTheme } from '@mui/material';
 import { Button, Card } from '@mui/material';
+import { FaSave, FaTimes } from 'react-icons/fa';
 
 const API_URL_PRODUCTS = 'http://192.168.0.16:5000/api/products';
 const API_URL_INVENTORY = 'http://192.168.0.16:5000/api/inventory';
 
 interface InventoryFormProps {
     product: Product | null;
-    inventoryItem?: InventoryItem | null; // Make inventoryItem optional
+    inventoryItem?: InventoryItem | null; // Hacer opcional inventoryItem
     onClose: () => void;
 }
 
@@ -46,7 +47,7 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
             const response = await axios.get<Product[]>(API_URL_PRODUCTS);
             setProducts(response.data);
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error al obtener productos:', error);
         }
     };
 
@@ -54,7 +55,7 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
         e.preventDefault();
 
         if (selectedProductId === '' || quantity === '' || quantity <= 0) {
-            setError('Please provide a valid product and quantity.');
+            setError('Por favor, proporciona un producto válido y una cantidad.');
             return;
         }
 
@@ -62,19 +63,19 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
 
         try {
             if (inventoryItem) {
-                // Update existing inventory item
+                // Actualizar ítem de inventario existente
                 await axios.put(`${API_URL_INVENTORY}/${inventoryItem.id}`, payload);
-                setSnackbarMessage('Inventory item updated successfully.');
+                setSnackbarMessage('Ítem de inventario actualizado correctamente.');
             } else {
-                // Add new inventory item
+                // Añadir nuevo ítem de inventario
                 await axios.post(API_URL_INVENTORY, payload);
-                setSnackbarMessage('Inventory item added successfully.');
+                setSnackbarMessage('Ítem de inventario añadido correctamente.');
             }
             setOpenSnackbar(true);
             onClose();
         } catch (error) {
-            console.error('Error saving inventory item:', error);
-            setSnackbarMessage('Failed to save inventory item. Please try again.');
+            console.error('Error al guardar el ítem de inventario:', error);
+            setSnackbarMessage('No se pudo guardar el ítem de inventario. Inténtalo de nuevo.');
             setOpenSnackbar(true);
         }
     };
@@ -85,17 +86,18 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
 
     return (
         <Card 
-            style={{
-                backgroundColor: 'white',
-                width: isSmallScreen ? '90vw' : '30vw',
-                height: isSmallScreen ? 'auto' : '20vw',
-                padding: '15px',
+            sx={{
+                backgroundColor: '#f5f5f5',
+                width: isSmallScreen ? '90vw' : '40vw',
+                padding: '20px',
                 margin: 'auto',
                 marginTop: isSmallScreen ? '20px' : '0',
+                boxShadow: 3,
+                borderRadius: '8px',
             }}
         >
-            <Typography variant="h4" gutterBottom>
-                {inventoryItem ? 'Edit Inventory Item' : 'Añadir Item '}
+            <Typography variant="h5" gutterBottom>
+                {inventoryItem ? 'Editar ítem de inventario' : 'Añadir ítem de inventario'}
             </Typography>
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2} direction="column">
@@ -106,9 +108,10 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
                                 value={selectedProductId}
                                 onChange={handleProductChange}
                                 displayEmpty
+                                inputProps={{ 'aria-label': 'Producto' }}
                             >
                                 <MenuItem value="">
-                                    <em></em>
+                            
                                 </MenuItem>
                                 {products.map((prod) => (
                                     <MenuItem key={prod.id} value={prod.id}>
@@ -126,7 +129,7 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
                             fullWidth
                             value={quantity === '' ? '' : quantity}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setQuantity(e.target.value === '' ? '' : Number(e.target.value))}
-                            placeholder="Cantidad"
+                            placeholder="Introduce la cantidad"
                             required
                         />
                     </Grid>
@@ -135,12 +138,12 @@ const InventoryForm: React.FC<InventoryFormProps> = ({ product, inventoryItem, o
                             <Alert severity="error">{error}</Alert>
                         </Grid>
                     )}
-                    <Grid item>
-                        <Button type="submit" color="success" variant="contained">
-                            {inventoryItem ? 'Update Inventory Item' : 'Añadir'}
+                    <Grid item container spacing={1} justifyContent="flex-end">
+                        <Button type="submit" color="success" variant="contained" endIcon={<FaSave />} sx={{ mr: 1 }}>
+                            {inventoryItem ? 'Actualizar' : 'Añadir'}
                         </Button>
-                        <Button type="button" color="error" variant="outlined" onClick={onClose} style={{ marginLeft: '10px' }}>
-                            Cancel
+                        <Button type="button" color="error" variant="outlined" onClick={onClose} endIcon={<FaTimes />} sx={{ ml: 1 }}>
+                            Cancelar
                         </Button>
                     </Grid>
                 </Grid>

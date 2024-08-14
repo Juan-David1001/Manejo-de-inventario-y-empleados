@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Product, InventoryItem } from '../types/types';
 import InventoryForm from './invetarioForm';
 import { Button, Card, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 
 const API_URL_PRODUCTS = 'http://192.168.0.16:5000/api/products';
 const API_URL_INVENTORY = 'http://192.168.0.16:5000/api/inventory';
@@ -60,24 +61,30 @@ const InventarioList: React.FC = () => {
     };
 
     return (
-        <Card style={{ padding: '20px', width: '100%',marginTop:'10%' }}>   
-            <h1>Inventario</h1>
-            <Button color='success' style={{ margin: '20px 0' }} onClick={handleAddProductClick}>Añadir</Button>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <Card className='p-6 w-full mx-auto mt-10'>
+            <h1 className='text-2xl font-bold mb-4'>Inventario</h1>
+            <Button color='success' className='mb-4 flex items-center' onClick={handleAddProductClick}>
+                <FaPlus className='mr-2' /> Añadir
+            </Button>
+            <div className='flex flex-wrap gap-4'>
                 {inventory.map((item) => {
                     const product = products.find(p => p.id === item.product_id);
                     return (
-                        <div key={item.id} style={{ flex: '1 1 calc(33.333% - 20px)', boxSizing: 'border-box' }}>
-                            <Card>
+                        <div key={item.id} className='flex-1 min-w-[300px]'>
+                            <Card className='shadow-lg'>
                                 <CardHeader>
-                                    <p >{product ? product.name : 'Unknown Product'}</p>
+                                    <p className='text-lg font-semibold'>{product ? product.name : 'Unknown Product'}</p>
                                 </CardHeader>
                                 <CardBody>
-                                    <p>Cantidad: {item.quantity}</p>
+                                    <p className='text-gray-700'>Cantidad: {item.quantity}</p>
                                 </CardBody>
-                                <CardFooter>
-                                    <Button color="warning" onClick={() => handleEditClick(item)}>Editar</Button>
-                                    <Button color="danger" onClick={() => handleDelete(item.id)} style={{ marginLeft: '10px' }}>Borrar</Button>
+                                <CardFooter className='flex justify-between'>
+                                    <Button color="warning" className='flex items-center' onClick={() => handleEditClick(item)}>
+                                        <FaEdit className='mr-2' /> Editar
+                                    </Button>
+                                    <Button color="danger" className='flex items-center' onClick={() => handleDelete(item.id)}>
+                                        <FaTrash className='mr-2' /> Borrar
+                                    </Button>
                                 </CardFooter>
                             </Card>
                         </div>

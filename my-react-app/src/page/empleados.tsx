@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import UserDataTable from "../components/Data-user";
 import UsersTable from "../components/Tableuser";
 import AppNavbar from '../components/navbar';
@@ -25,14 +25,12 @@ function Admin() {
     }}>
       <AppNavbar />
       
-      <div style={{ 
-        flex: 1, 
-        overflowY: 'auto', // Agrega la barra de desplazamiento vertical cuando sea necesario
-        padding: '16px',  // Espacio alrededor del contenido
-        boxSizing: 'border-box' // Asegura que el padding no afecte el ancho total
-      }}>
-        
+      <div className="flex-1 overflow-y-auto p-4 w-full mt-11">
+     
+      <h2 className="text-3xl font-bold mb-6 text-gray-900">Tabla de Registros</h2>
         <UserDataTable />  
+        <br></br>
+        <h2 className="text-3xl font-bold mb-6 text-gray-900">Tabla de Usuarios</h2>
         <UsersTable />
         {isAddUserVisible && <AddUser />} {/* Condicionalmente renderiza AddUser */}
       </div>

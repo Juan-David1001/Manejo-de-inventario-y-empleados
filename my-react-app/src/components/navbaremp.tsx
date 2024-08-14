@@ -12,6 +12,7 @@ import {
 import Cerrar from './cerrar';
 import llogo from '../assets/llogo.png';
 import {Marcarllegada} from './Marcarllegada';
+import RegistrarSalida from './marcarsalida';
 
 function AppNavbaremp() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -69,22 +70,28 @@ function AppNavbaremp() {
         </NavbarItem>
       </NavbarContent>
       
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center" >
+        <NavbarItem className='flex gap-12'>
           <Link color="foreground" href="employee" style={{
             marginRight: '10px',
           }}>
             Principal
           </Link>
+        
           <Cerrar />
+
         </NavbarItem>
       </NavbarContent>
       <NavbarContent>
+        <NavbarItem>
+          <RegistrarSalida />
+        </NavbarItem>
         <NavbarItem>
         <Marcarllegada />
 
         </NavbarItem>
       </NavbarContent>
+      
       <NavbarContent justify="end">
         <NavbarItem>
           
@@ -106,6 +113,7 @@ function AppNavbaremp() {
             Materia Prima
           </Link> <br />
           <Cerrar />
+          <RegistrarSalida />
 
         </NavbarMenuItem>
       </NavbarMenu>

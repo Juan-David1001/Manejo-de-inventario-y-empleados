@@ -10,7 +10,7 @@ import MateriaPrimaPage from "./page/MateriaPrimaPage";
 import AñadirJob from "./page/añadirjob";
 import AdminProducts from "./page/adminproducts";
 import  Factura  from "./page/factura";
-
+import AdministrarHorario from "./page/administrarHorario";
 
 const App: React.FC = () => {
   const [role, setRole] = useState<string | null>(null);
@@ -91,6 +91,10 @@ const App: React.FC = () => {
        <Route
         path="/editjobs"
         element={role ==="admin" ? <AñadirJob /> : <Navigate to="/login" />}
+      />
+        <Route
+        path="/administrarHorario"
+        element={role ==="admin" ? <AdministrarHorario /> : <Navigate to="/login" />}
       />
        <Route
         path="/editproducts"

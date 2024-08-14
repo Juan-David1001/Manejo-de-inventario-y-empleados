@@ -31,7 +31,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
         e.preventDefault();
 
         if (name.trim() === '' || price === '') {
-            setError('Please provide both name and price.');
+            setError('Por favor, proporciona tanto el nombre como el precio.');
+            setOpenSnackbar(true);
             return;
         }
 
@@ -40,27 +41,36 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
         try {
             if (product) {
                 await axios.put(`${API_URL}/${product.id}`, payload);
-                setSnackbarMessage('Product updated successfully.');
+                setSnackbarMessage('Producto actualizado con éxito.');
             } else {
                 await axios.post(API_URL, payload);
-                setSnackbarMessage('Product added successfully.');
-                
+                setSnackbarMessage('Producto añadido con éxito.');
             }
+            setError(null);
             setOpenSnackbar(true);
             onClose();
         } catch (error) {
-            console.error('Error saving product:', error);
-            setSnackbarMessage('Failed to save product. Please try again.');
+            console.error('Error al guardar el producto:', error);
+            setSnackbarMessage('No se pudo guardar el producto. Por favor, intenta de nuevo.');
+            setError(null);
             setOpenSnackbar(true);
         }
     };
 
     return (
-        <Container style={{
-            backgroundColor:'white'
-        }}>
-            <Typography variant="h4" gutterBottom>
-                {product ? 'Edit Product' : 'Add New Product'}
+        <Container
+            sx={{
+                backgroundColor: '#ffffff',
+                padding: '20px',
+                borderRadius: '8px',
+                boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                maxWidth: '600px',
+                margin: 'auto',
+                mt: 4,
+            }}
+        >
+            <Typography variant="h4" gutterBottom align="center">
+                {product ? 'Editar Producto' : 'Añadir Nuevo Producto'}
             </Typography>
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={2} direction="column">
@@ -71,8 +81,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                             fullWidth
                             value={name}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-                            placeholder="Enter product name"
+                            placeholder="Ingresa el nombre del producto"
                             required
+                            sx={{ mb: 2 }}
                         />
                     </Grid>
                     <Grid item>
@@ -83,8 +94,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                             fullWidth
                             value={price === '' ? '' : price}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => setPrice(e.target.value === '' ? '' : Number(e.target.value))}
-                            placeholder="Enter product price"
+                            placeholder="Ingresa el precio del producto"
                             required
+                            sx={{ mb: 2 }}
                         />
                     </Grid>
                     {error && (
@@ -93,10 +105,22 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
                         </Grid>
                     )}
                     <Grid item>
-                        <Button type="submit" variant="contained" color="primary">
-                            {product ? 'Actualizar producto' : 'Añadir producto'}
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            sx={{ py: 1.5, fontSize: '16px' }}
+                        >
+                            {product ? 'Actualizar Producto' : 'Añadir Producto'}
                         </Button>
-                        <Button type="button" variant="outlined" color="secondary" onClick={onClose} style={{ marginLeft: '10px' }}>
+                        <Button
+                            type="button"
+                            variant="outlined"
+                            color="secondary"
+                            onClick={onClose}
+                            sx={{ mt: 2, ml: 1.5 }}
+                        >
                             Cancelar
                         </Button>
                     </Grid>

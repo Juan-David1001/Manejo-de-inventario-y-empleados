@@ -20,7 +20,7 @@ const ProductList: React.FC = () => {
             const response = await axios.get<Product[]>(API_URL);
             setProducts(response.data);
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error al obtener productos:', error);
         }
     };
 
@@ -29,7 +29,7 @@ const ProductList: React.FC = () => {
             await axios.delete(`${API_URL}/${id}`);
             fetchProducts();
         } catch (error) {
-            console.error('Error deleting product:', error);
+            console.error('Error al eliminar producto:', error);
         }
     };
 
@@ -44,25 +44,30 @@ const ProductList: React.FC = () => {
     };
 
     return (
-        <Container style={{
-            width: '90vw',
-            height: '90vh',
-
-
-        }} >
-            <Typography variant="h4" gutterBottom>
-                Product List
+        <Container
+            sx={{
+                width: '90vw',
+                height: '90vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '20px',
+                backgroundColor: '#f9f9f9',
+            }}
+        >
+            <Typography variant="h4" gutterBottom align="center">
+                Lista de Productos
             </Typography>
             <Button 
                 variant="contained" 
                 color="primary" 
                 onClick={handleAddProductClick}
-                style={{ marginBottom: '20px' }}
+                sx={{ mb: 2 }}
             >
                 Añadir nuevo producto
             </Button>
-            <TableContainer component={Paper} >
-                <Table >
+            <TableContainer component={Paper} sx={{ width: '100%', maxWidth: '1000px' }}>
+                <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>Nombre</TableCell>
@@ -74,22 +79,22 @@ const ProductList: React.FC = () => {
                         {products.map((product) => (
                             <TableRow key={product.id}>
                                 <TableCell>{product.name}</TableCell>
-                                <TableCell>{product.price}</TableCell>
+                                <TableCell>${product.price.toFixed(2)}</TableCell>
                                 <TableCell>
                                     <Button 
                                         variant="outlined" 
                                         color="primary"
                                         onClick={() => handleEditClick(product)}
-                                        style={{ marginRight: '10px' }}
+                                        sx={{ mr: 1 }}
                                     >
-                                        Edit
+                                        Editar
                                     </Button>
                                     <Button 
                                         variant="outlined" 
                                         color="error"
                                         onClick={() => handleDelete(product.id)}
                                     >
-                                        Delete
+                                        Eliminar
                                     </Button>
                                 </TableCell>
                             </TableRow>

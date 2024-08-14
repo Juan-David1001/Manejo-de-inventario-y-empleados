@@ -150,11 +150,11 @@ const RawMaterialTable: React.FC = () => {
             />
             <Button 
                 variant="contained" 
-                color="primary" 
+                color="success" 
                 onClick={editingId === null ? handleAddMaterial : handleEditMaterial}
                 style={{ marginTop: 16 }}
             >
-                {editingId === null ? 'Add Material' : 'Update Material'}
+                {editingId === null ? 'Añadir material' : 'Actualizar Material'}
             </Button>
             <TableContainer component={Paper} style={{ marginTop: 16 }}>
                 <Table>
@@ -178,10 +178,10 @@ const RawMaterialTable: React.FC = () => {
                                 <TableCell>
                                     <Button 
                                         variant="contained" 
-                                        color="secondary" 
+                                        color="warning" 
                                         onClick={() => handleEditClick(material)}
                                     >
-                                        Edit
+                                        Editar
                                     </Button>
                                     <Button 
                                         variant="contained" 
@@ -189,7 +189,7 @@ const RawMaterialTable: React.FC = () => {
                                         onClick={() => handleDeleteMaterial(material.id)}
                                         style={{ marginLeft: 8 }}
                                     >
-                                        Delete
+                                        Borrar
                                     </Button>
                                 </TableCell>
                             </TableRow>

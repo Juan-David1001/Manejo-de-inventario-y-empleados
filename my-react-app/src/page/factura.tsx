@@ -58,6 +58,10 @@ export default function Factura() {
   const addRow = () => {
     setSelectedProducts([...selectedProducts, { product: null, quantity: 0 }]);
   };
+  const Emprimir = () => {
+    window.print();
+  };
+
 
   return (
     <div>
@@ -115,7 +119,7 @@ export default function Factura() {
   <tr>
     <th className="py-2 px-4  text-start">Producto</th>
     <th className="py-2 px-4 text-start">Cantidad</th>
-    <th className="py-2 px-4 text-center">Precio</th>
+    <th className="py-2 px-4 text-center">Precio unitario</th>
     <th className="py-2 px-4 text-center">Total</th>
   </tr>
 </thead>
@@ -152,7 +156,7 @@ export default function Factura() {
     </tr>
   ))}
   <tr>
-    <td colSpan={3} className="text-right font-bold py-2 px-4">Total</td>
+    <td colSpan={3} className="text-right  font-bold py-2 px-4">Total</td>
     <td className="font-bold py-2 px-4 text-center">
       {Math.round(total)}
     </td>
@@ -166,6 +170,14 @@ export default function Factura() {
           </button>
         </div>
       </div>
+      <button
+            
+            id="Addrow"
+            onClick={Emprimir}
+            className="mt-4 p-2 bg-blue-950 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
+          >
+            Imprimir
+          </button>
     </div>
   );
 }

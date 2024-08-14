@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Navbar,
-  NavbarBrand,
+
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
@@ -22,6 +22,7 @@ export default function AppNavbar() {
     { label: "Editar Trabajos", path: "/editjobs" },
     { label: "Editar Productos", path: "/editproducts" },
     { label: "Factura ", path: "/factura" },
+    {label:"Ver Horario", path:"/administrarHorario"},
    
   ];
 
@@ -36,9 +37,7 @@ export default function AppNavbar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
-          <p className="font-bold text-inherit">Velas</p>
-        </NavbarBrand>
+       
       </NavbarContent>
       <NavbarContent justify='center'>
         <NavbarItem>
